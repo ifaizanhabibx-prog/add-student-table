@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Table with Input</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #form {
+            text-align: center;
+            margin: 20px;
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Add Student</h1>
+
+    <!-- input fields -->
+    <div id="form">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="number" id="age" placeholder="Enter oyur age">
+        <input type="text" id="grade" placeholder="Enter grade">
+        <button onclick="addRow()">Add Row</button>
+    </div>
+
+    <!--Table  -->
+    <table id="studentTable">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+        </tr>
+    </table>
+    <script>
+        function addRow() {
+            // Get values from input fields
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const grade = document.getElementById("grade").value;
+
+            // Validate input fields
+            if (!name || !age || !grade) {
+                alert("Please enter all fields");
+                return; 
+            }
+
+            // Create table row
+            const table = document.getElementById("studentTable");
+            const row = document.createElement("tr");
+
+            // Populate the row with cell datas
+            row.innerHTML = `<td>${name}</td><td>${age}</td><td>${grade}</td>`;
+
+            table.appendChild(row);
+
+            // Clear input fields
+            document.getElementById("name").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("grade").value = "";
+        }
+    </script>
+</body>
+
+</html>
